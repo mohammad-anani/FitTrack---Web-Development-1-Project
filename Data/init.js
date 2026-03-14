@@ -1,11 +1,4 @@
-const tables = [
-  "users",
-  "goals",
-  "workouts",
-  "trainings",
-  "goalWorkouts",
-  "types",
-];
+const tables = ["users", "goals", "workouts", "types"];
 
 export function initTablesInLocalStorage() {
   tables.forEach((tableName) => {

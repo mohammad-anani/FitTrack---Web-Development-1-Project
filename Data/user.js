@@ -1,3 +1,5 @@
+import { Goal } from "./goal";
+import { encryptPassword } from "./passwordManager";
 import {
   add,
   deleteByID,
@@ -10,41 +12,92 @@ import {
 const tableName = "users";
 const idKey = "id";
 
-export function getAllUsers(filter = null) {
-  return getAll(tableName, filter);
-}
+export class User {
+  constructor(id = -1, email = "", password = "", name = "") {
+    this.id = id;
+    this.email = email;
+    this.password = password;
+    this.name = name;
+  }
 
-export function getUserByID(id) {
-  return getByID(tableName, id, idKey);
-}
+  static createInstance(data) {
+    if (!data) return null;
+    return new User(data.id, data.email, "", data.name);
+  }
 
-export function addUser(user) {
-  return add(tableName, user, idKey);
-}
+  static getAllUsers(filter = null) {
+    const data = getAll(tableName, filter);
+    return data.map((obj) => User.createInstance(obj));
+  }
 
-export function updateUser(user) {
-  return updateByID(tableName, user, idKey);
-}
+  static getUserByID(id) {
+    const data = getByID(tableName, id, idKey);
+    return User.createInstance(data);
+  }
 
-export function deleteUserByID(id) {
-  return deleteByID(tableName, id, idKey);
-}
+  addUser() {
+    const userToSave = { ...this, password: encryptPassword(this.password) };
+    return add(tableName, userToSave, idKey);
+  }
 
-export function userExistsByUsername(username) {
-  return idExists(tableName, username, "username");
-}
+  updateUser() {
+    const userToSave = { ...this };
 
-export function findUserByUsernameAndPassword(username, password) {
-  const filtered = getAll(tableName, [
-    ["username", username],
-    ["password", password],
-  ]);
+    if ("password" in userToSave) {
+      delete userToSave.password;
+    }
 
-  if (!filtered || filtered.length === 0) return null;
+    return updateByID(tableName, userToSave, idKey);
+  }
 
-  return filtered[0];
-}
+  static deleteUserByID(id) {
+    return deleteByID(tableName, id, idKey);
+  }
 
-export function userExistsByUsername(username, password) {
-  return !!findUserByUsernameAndPassword(username, password);
+  static userExistsByEmail(email) {
+    return idExists(tableName, email, "email");
+  }
+
+  static findUserByEmailAndPassword(email, password) {
+    const filtered = getAll(tableName, [
+      ["email", email],
+      ["password", encryptPassword(password)],
+    ]);
+
+    if (!filtered || filtered.length === 0) return null;
+
+    return User.createInstance(filtered[0]);
+  }
+
+  static userExistsByEmailAndPassword(email, password) {
+    return !!this.findUserByEmailAndPassword(email, password);
+  }
+
+  static getGlobalStats(userId) {
+    const workouts = Workout.getWorkoutsByUser(userId);
+    const totalWorkouts = workouts.length;
+    const totalCalories = workouts.reduce(
+      (sum, workout) => sum + (Number(workout.calories) || 0),
+      0,
+    );
+    const totalDuration = workouts.reduce(
+      (sum, workout) => sum + (Number(workout.duration) || 0),
+      0,
+    );
+
+    const goals = Goal.getUserGoals(userId);
+    const totalGoals = goals.length;
+    const completedGoals = goals.reduce(
+      (total, goal) => total + Number(goal.isCompleted()),
+      0,
+    );
+
+    return {
+      totalWorkouts,
+      totalCalories,
+      totalDuration,
+      totalGoals,
+      completedGoals,
+    };
+  }
 }

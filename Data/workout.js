@@ -58,8 +58,18 @@ export class Workout {
     return data.map((obj) => Workout.createInstance(obj));
   }
 
-  static getWorkoutsByUser(userId) {
-    const data = getAll(tableName, [["userId", userId]]);
+  static getWorkoutsByUser(
+    userId,
+    filter = null,
+    sortKey = null,
+    isAsc = true,
+  ) {
+    const data = getAll(
+      tableName,
+      [["userId", userId], ...(filter ?? [])],
+      sortKey,
+      isAsc,
+    );
     return data.map((obj) => Workout.createInstance(obj));
   }
 

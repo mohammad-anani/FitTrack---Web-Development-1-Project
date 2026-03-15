@@ -15,7 +15,7 @@ if (savedUserID) {
   const user = User.getUserByID(Number(savedUserID));
 
   sessionStorage.setItem("currentUser", JSON.stringify({ ...user }));
-  window.location.href = "/home";
+  window.location.href = "/workouts";
 }
 
 passwordInput.addEventListener("input", (e) => {
@@ -52,7 +52,7 @@ form.addEventListener("submit", (e) => {
       localStorage.setItem("savedUserID", "" + user.id);
     } else localStorage.removeItem("savedUserID");
 
-    window.location.href = "/home";
+    window.location.href = "/workouts";
   } else {
     loginFailedSpan.textContent = "Failed";
   }

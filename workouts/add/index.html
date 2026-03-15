@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./script.js" type="module"></script>
+
+    <title>Add Workout</title>
+  </head>
+  <body>
+    <h1>Add Workout</h1>
+    <form id="workoutForm">
+      <label for="name">Workout Name:</label>
+      <input required name="name" type="text" id="name" />
+      <span id="nameValidation">required</span>
+      <label for="type">Type:</label>
+      <select required name="type" id="type">
+        <option value="" disabled selected>Select a type</option>
+      </select>
+      <span id="typeValidation">required</span>
+      <label for="date">Date:</label>
+      <input required name="date" type="date" id="date" />
+      <span id="dateValidation">required</span>
+      <label for="duration">Duration (mins):</label>
+      <input required name="duration" type="number" id="duration" min="1" />
+      <span id="durationValidation">required</span>
+      <label for="calories">Calories:</label>
+      <input required name="calories" type="number" id="calories" min="1" />
+      <span id="caloriesValidation">required</span>
+      <button id="submit" type="submit">Add Workout</button>
+      <button id="reset" type="reset">Clear</button>
+    </form>
+  </body>
+</html>

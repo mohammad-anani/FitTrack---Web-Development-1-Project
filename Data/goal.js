@@ -61,7 +61,7 @@ export class Goal {
   }
 
   static getCurrentUserGoal(userId) {
-    const { monday, sunday } = this.getWeekRange(new Date());
+    const { monday, sunday } = Goal.getWeekRange(new Date());
     const data = getAll(tableName, [
       ["userId", userId],
       ["weekStartDate", monday],
@@ -70,7 +70,7 @@ export class Goal {
   }
 
   addGoal() {
-    const { monday, sunday } = this.getWeekRange(new Date());
+    const { monday, sunday } = Goal.getWeekRange(new Date());
     const dataToSave = {
       id: this.id,
       userId: this.userId,
@@ -96,11 +96,11 @@ export class Goal {
   }
 
   static userHasCurrentGoal(userId) {
-    return !!this.getCurrentUserGoal(userId);
+    return !!Goal.getCurrentUserGoal(userId);
   }
 
   static getGoalWorkouts(goalId) {
-    const goal = this.getGoalById(goalId);
+    const goal = Goal.getGoalById(goalId);
     const { monday, sunday } = Goal.getWeekRange(goal.weekStartDate);
     const userWorkouts = Workout.getWorkoutsByUser(goal.userId);
     return userWorkouts.filter((workout) => {
@@ -118,11 +118,12 @@ export class Goal {
 
     const workoutsInGoalWeek = Goal.getGoalWorkouts(goalId);
 
-    const weeklyCalories = workoutsInGoalWeek.reduce(
-      (sum, w) => sum + (Number(w.calories) || 0),
-      0,
-    );
-    const weeklyCount = workoutsInGoalWeek.length;
+    const weeklyCalories =
+      workoutsInGoalWeek?.reduce(
+        (sum, w) => sum + (Number(w.calories) || 0),
+        0,
+      ) || 0;
+    const weeklyCount = workoutsInGoalWeek?.length || 0;
 
     const calorieGoal = Number(goal.calorieTarget) || 0;
     const workoutGoal = Number(goal.workoutTarget) || 0;
@@ -143,7 +144,7 @@ export class Goal {
         Math.round((weeklyCount / workoutGoal) * 100),
       );
     }
-
+    const totalProgress = (calorieProgress + workoutProgress) / 2;
     return {
       weeklyCalories,
       weeklyCount,
@@ -151,9 +152,8 @@ export class Goal {
       workoutGoal,
       calorieProgress,
       workoutProgress,
-      motivationalMessage: this.getMotivationalMessage(
-        (calorieProgress + workoutProgress) / 2,
-      ),
+      totalProgress,
+      motivationalMessage: Goal.getMotivationalMessage(totalProgress),
     };
   }
 
@@ -167,7 +167,7 @@ export class Goal {
   }
 
   isCompleted() {
-    const stats = this.getGoalStats(this.id);
+    const stats = Goal.getGoalStats(this.id);
     if (!stats) return false;
 
     return stats.calorieProgress >= 100 && stats.workoutProgress >= 100;

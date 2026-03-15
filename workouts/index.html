@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./script.js" defer type="module"></script>
+    <title>Workouts</title>
+  </head>
+  <body>
+    <h1>Workouts</h1>
+    <button onclick="window.location.href += 'add'">Add</button>
+    <select id="sort">
+      <option value="calories">Calories</option>
+      <option value="duration">Duration</option>
+    </select>
+    <input type="radio" value="asc" name="order" />
+    <input type="radio" value="desc" name="order" />
+
+    <select id="type">
+      <option value="" disabled selected>Select a type</option>
+    </select>
+    <input type="date" id="from" />
+    <input type="date" id="to" />
+    <input type="text" id="name" />
+    <div id="list"></div>
+  </body>
+</html>

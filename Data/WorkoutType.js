@@ -12,10 +12,12 @@ export class WorkoutType {
   }
 
   static seedDefaultData() {
-    const types = getAllTypes();
-    if (types.length === 0) {
+    const types = WorkoutType.getAllTypes();
+    if (!types || types.length === 0) {
       const defaultTypes = ["Strength", "Yoga", "Cardio"];
       localStorage.setItem(tableName, JSON.stringify(defaultTypes));
     }
   }
 }
+
+WorkoutType.seedDefaultData();

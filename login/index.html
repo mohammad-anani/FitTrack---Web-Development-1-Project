@@ -3,24 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./script.js" type="module"></script>
-    <script src="../Data/init.js" defer type="module"></script>
-    <title>Login</title>
+
+    <!--css links-->
+    <link rel="stylesheet" href="/Global/global.css" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!--lato font link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>FitTrack Login</title>
   </head>
   <body>
-    <h1>Login</h1>
-    <form id="form">
-      <label for="email">Email:</label>
-      <input required name="email" type="email" id="email" />
-      <span id="emailValidation">required</span>
-      <label for="password">Password:</label>
-      <input required name="password" type="password" id="password" />
-      <span id="passwordValidation">required</span>
-      <input type="checkbox" id="rememberMe" />
-      <label for="rememberMe">Remember Me</label>
-      <span id="loginFailed"></span>
-      <button id="submit" type="submit">Submit</button>
-      <button id="reset" type="reset">Clear</button>
+    <form class="login-form" id="form">
+      <div class="logo-div">
+        <img class="logo-img" src="../Pictures/AU LOGO.jpg" alt="Logo" />
+      </div>
+      <div class="login-credentials-div">
+        <div class="input-container">
+          <span class="label">Email:</span>
+          <input
+            type="text"
+            id="email-input"
+            class="email-input"
+            placeholder="me@gmail.com"
+          />
+          <span id="email-validation" class="validation"></span>
+        </div>
+        <div class="input-container">
+          <span class="label">Password:</span>
+          <input
+            type="password"
+            id="password-input"
+            class="password-input"
+            placeholder="Password"
+          />
+          <span id="password-validation" class="validation"></span>
+        </div>
+      </div>
+      <div class="remember-me-div">
+        <input
+          type="checkbox"
+          class="remember-me-input"
+          id="remember-me-input"
+        />
+        <label for="remember-me-input" class="remember-me-label"
+          >Remember me</label
+        >
+      </div>
+      <span id="login-validation" class="validation login-validation"></span>
+      <div class="signin-button-div">
+        <button type="submit" class="signin-button">Sign in</button>
+      </div>
+      <small class="copyright-small"
+        >&copy;All rights reserved to FitTrack 2026</small
+      >
     </form>
   </body>
+  <script src="script.js" type="module"></script>
 </html>

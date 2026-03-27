@@ -22,6 +22,7 @@ export class User {
 
   static createInstance(data) {
     if (!data) return null;
+    console.log(data);
     return new User(data.id, data.email, "", data.name);
   }
 
@@ -36,6 +37,8 @@ export class User {
   }
 
   addUser() {
+    if (User.userExistsByEmail(this.email)) return -1;
+
     const userToSave = { ...this, password: encryptPassword(this.password) };
     return add(tableName, userToSave, idKey);
   }
@@ -59,6 +62,8 @@ export class User {
   }
 
   static findUserByEmailAndPassword(email, password) {
+    console.log(email, password);
+
     const filtered = getAll(tableName, [
       ["email", email],
       ["password", encryptPassword(password)],

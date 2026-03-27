@@ -1,0 +1,62 @@
+:root {
+  --MainColor: rgb(8, 8, 36);
+  --LightMainColor: rgb(43, 43, 84);
+  --BackgroundColor: rgb(210, 210, 210);
+  --SemiLightMainColor: rgb(47, 47, 105);
+  --DestructiveColor: rgb(255, 0, 0);
+}
+
+html {
+  background-color: var(--BackgroundColor);
+  height: 100%;
+  overflow-x: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25) inset;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+* {
+  font-family: Lato, Arial;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  width: 50%;
+  height: 50px;
+  font-size: 25px;
+  color: var(--MainColor);
+  border: 1px solid var(--BackgroundColor);
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+img {
+  width: 100%;
+}
+
+input,
+select {
+  height: 50px;
+  font-size: 25px;
+  padding-left: 15px;
+  outline-color: var(--LightMainColor);
+  color: var(--MainColor);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}

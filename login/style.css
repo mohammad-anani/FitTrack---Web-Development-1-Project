@@ -1,0 +1,145 @@
+html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  background-color: var(--MainColor);
+  box-sizing: border-box;
+  width: 400px;
+  height: 540px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+
+.logo-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo-img {
+  width: 100%;
+  height: 110px;
+}
+
+.login-credentials-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2px;
+}
+
+.label {
+  color: white;
+}
+
+.input-container input {
+  height: 40px;
+}
+
+.validation {
+  color: var(--DestructiveColor);
+  height: 15px;
+}
+
+.login-validation {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 30px;
+  flex-direction: column;
+}
+
+.remember-me-div {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 10px;
+  height: 10px;
+}
+
+.remember-me-input {
+  width: 15px;
+  height: 23px;
+}
+
+.remember-me-label {
+  color: var(--BackgroundColor);
+  padding-left: 5px;
+}
+
+.signin-button-div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-button {
+  width: 50%;
+  height: 50px;
+  font-size: 25px;
+  color: var(--MainColor);
+  border: 1px solid var(--BackgroundColor);
+}
+
+.signin-button:active {
+  color: var(--BackgroundColor);
+  background-color: var(--MainColor);
+}
+
+.copyright-small {
+  border-radius: 10px;
+  color: var(--BackgroundColor);
+  text-align: center;
+}
+
+.failed {
+  outline: 1px solid red;
+  border: 3px solid red;
+}
+
+.failed-animation {
+  animation-name: error;
+  animation-duration: 0.3s;
+}
+
+.failed input::placeholder {
+  color: red;
+}
+
+@keyframes error {
+  0% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(5px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}

@@ -1,0 +1,160 @@
+.menu-aside {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--LightMainColor);
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+  border-top-left-radius: 0;
+}
+
+body {
+  padding-left: 250px;
+}
+
+.logo-img {
+  height: 80px;
+  width: 235px;
+  opacity: 0.95;
+}
+
+.upper-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  padding-top: 10px;
+  justify-content: space-evenly;
+}
+
+.profile-username-span {
+  color: var(--BackgroundColor);
+  font-size: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-nav {
+  position: relative;
+  padding-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.nav-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  z-index: 100;
+  padding-left: 35%;
+  color: var(--BackgroundColor);
+  border: none;
+  height: 70px;
+  text-align: justify;
+  align-content: center;
+  font-size: 15px;
+  background-color: transparent;
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+.selection-div {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  top: 20px;
+  background-color: var(--MainColor);
+  transition: top 0.15s;
+  border-radius: 0px;
+}
+
+.selection-div::before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  height: 100%;
+  width: 10px;
+  z-index: 101;
+  background-color: var(--BackgroundColor);
+}
+
+.nav-button:hover {
+  background-color: var(--SemiLightMainColor);
+  opacity: 1;
+}
+
+.hover-disabled {
+  pointer-events: none;
+}
+
+.menu-nav i {
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+.fa-solid.fa-chevron-down {
+  position: absolute;
+  right: 10px;
+  padding: 0px;
+  transition: transform 0.15s;
+}
+
+@media (max-width: 742px) {
+  body {
+    padding-left: 0px;
+    padding-top: 60px;
+  }
+
+  .menu-aside {
+    width: 60px;
+    transform-origin: top left;
+    transform: rotate(-0.25turn);
+    position: fixed;
+    height: 100vw;
+    top: 60px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .logo-img,
+  .menu-aside i {
+    transform: rotate(0.25turn);
+  }
+
+  .logo-img {
+    height: 50px;
+    width: 160px;
+    opacity: 0.95;
+  }
+
+  .menu-aside i {
+    padding-left: 11px;
+    padding-top: 20px;
+  }
+
+  .fa-solid.fa-chevron-down {
+    position: absolute;
+    bottom: 5px;
+    right: auto;
+    left: 10px;
+    font-size: 12px;
+  }
+
+  .menu-aside span {
+    display: none;
+  }
+
+  .selection-div::before {
+    width: 5px;
+  }
+
+  .profile-picture-img {
+    width: 50px;
+    height: 50px;
+  }
+}

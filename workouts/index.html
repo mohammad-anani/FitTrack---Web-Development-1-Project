@@ -25,7 +25,7 @@
     <!--This aside is present in all pages(acts as a Layout) -->
     <aside>
       <div class="profile-div">
-        <img src="../Pictures/AU LOGO.jpg" alt="Logo" class="logo-img" />
+        <img src="../Pictures/logo.png" alt="Logo" class="logo-img" />
         <span class="user-name-span"></span>
       </div>
       <nav>
@@ -76,7 +76,7 @@
       <div class="workouts-table">
         <!--Bar containing filter, add, search-->
         <div class="action-bar">
-          <button id="filter">
+          <button id="filter" class="secondary">
             <i class="fa-solid fa-filter"></i> <span> Filter </span>
           </button>
           <input
@@ -85,7 +85,7 @@
             placeholder="Search by name..."
             class="search-input"
           />
-          <button id="add">
+          <button id="add" class="primary">
             <i class="fa-solid fa-plus"></i>
             <span> Add </span>
           </button>
@@ -138,13 +138,14 @@
           </div>
           <div class="inputs-div">
             <select id="sort" name="sort">
+              <option value="date">Date</option>
               <option value="calories">Calories</option>
               <option value="duration">Duration</option>
             </select>
             <div class="order-div">
-              <input type="radio" value="asc" name="order" id="asc" checked />
+              <input type="radio" value="asc" name="order" id="asc" />
               <label for="asc"> Ascending </label>
-              <input type="radio" value="desc" name="order" id="desc" />
+              <input type="radio" value="desc" checked name="order" id="desc" />
               <label for="desc"> Descending </label>
             </div>
 
@@ -161,8 +162,8 @@
         </div>
 
         <div class="buttons-div">
-          <button id="reset">Reset</button>
-          <button id="apply">Apply</button>
+          <button id="reset" class="secondary">Reset</button>
+          <button id="apply" class="primary">Apply</button>
         </div>
       </div>
     </main>

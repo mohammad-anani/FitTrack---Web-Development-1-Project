@@ -46,33 +46,6 @@
       "calories": 350
     },
     {
-      "id": "9",
-      "userId": 3,
-      "name": "Evening Jog",
-      "type": "cardio",
-      "date": "2026-03-08",
-      "duration": 30,
-      "calories": 260
-    },
-    {
-      "id": "10",
-      "userId": 3,
-      "name": "Core Workout",
-      "type": "strength",
-      "date": "2026-03-09",
-      "duration": 20,
-      "calories": 180
-    },
-    {
-      "id": "11",
-      "userId": 3,
-      "name": "Stretch Routine",
-      "type": "flexibility",
-      "date": "2026-03-10",
-      "duration": 15,
-      "calories": 70
-    },
-    {
       "id": "12",
       "userId": 1,
       "name": "Rowing Machine",
@@ -197,6 +170,33 @@
       "date": "2026-04-02",
       "duration": 22,
       "calories": 22
+    },
+    {
+      "id": -1,
+      "userId": 3,
+      "name": "PushUps",
+      "type": "Strength",
+      "date": "2026-04-04",
+      "duration": 10,
+      "calories": 100
+    },
+    {
+      "id": -1,
+      "userId": 3,
+      "name": "Cardios",
+      "type": "Cardio",
+      "date": "2026-04-04",
+      "duration": 10,
+      "calories": 200
+    },
+    {
+      "id": -1,
+      "userId": 3,
+      "name": "riyada",
+      "type": "Cardio",
+      "date": "2026-04-01",
+      "duration": 10,
+      "calories": 100
     }
   ],
   "types": [

@@ -51,7 +51,7 @@ export async function renderCurrentGoal(currentGoal, currentGoalDiv) {
 </div>
 </div>
 <div class='reset-div'>
-<button class='reset-goal'>Reset</button>
+<button class='reset-goal primary'>Reset</button>
 </div>
 </div>
 
@@ -77,34 +77,39 @@ export async function renderCurrentGoal(currentGoal, currentGoalDiv) {
   const resetButton = document.querySelector(".reset-goal");
 
   resetButton.addEventListener("click", () => {
-    currentGoal.resetGoal();
-    window.location.reload();
+    if (confirm("Are you sure you want to reset goal?")) {
+      currentGoal.resetGoal();
+      window.location.reload();
+    }
   });
 }
 //renders a progress element value and its text from 0 smoothly
 function animateProgress(progressId, textId, currentValue, maxValue) {
   const progressElement = document.getElementById(progressId);
   const textElement = document.getElementById(textId);
-  let value = 0;
 
-  function step() {
-    if (value < currentValue) {
-      value += 0.7;
-      progressElement.value = value;
-      textElement.textContent = `${Math.floor(value)}/${maxValue}`;
+  const duration = 1000;
+  const intervalTime = 20;
+  const steps = duration / intervalTime;
 
-      let delay = 20;
+  let currentStep = 0;
 
-      setTimeout(step, delay);
-    } else {
-      progressElement.value = currentValue;
-      textElement.textContent = `${currentValue}/${maxValue}`;
+  const increment = currentValue / steps;
+
+  const interval = setInterval(() => {
+    currentStep++;
+
+    let value = increment * currentStep;
+
+    if (currentStep >= steps) {
+      value = currentValue;
+      clearInterval(interval);
     }
-  }
 
-  step();
+    progressElement.value = value;
+    textElement.textContent = `${Math.floor(value)}/${maxValue}`;
+  }, intervalTime);
 }
-
 // Makes the goal progress animation (number growing, caret moving, color changing, message typing)
 async function SetProgress(progress, motivationalMessage) {
   const targetProgress = Math.round(progress);

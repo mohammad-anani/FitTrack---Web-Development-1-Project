@@ -13,9 +13,11 @@ addNavButtonsEventListener();
 addLogoutEventListener();
 
 function setSelectedNavlink() {
-  const savedIndex = sessionStorage.getItem("selectedNavIndex");
-  if (savedIndex === null) return;
-
+  let savedIndex = sessionStorage.getItem("selectedNavIndex");
+  if (savedIndex === null) {
+    sessionStorage.setItem("selectedNavIndex", 1);
+    savedIndex = 1;
+  }
   selectionDiv.style.transition = "none";
   selectionDiv.style.top = 20 + 70 * Number(savedIndex) + "px";
   selectionDiv.offsetHeight;

@@ -53,7 +53,13 @@ button:hover {
 .secondary {
   color: var(--MainColor);
   border-color: var(--MainColor);
-  background-color: var(--BackgroundColor);
+  background-color: transparent;
+}
+
+.secondary:hover {
+  background-color: var(--MainColor);
+  color: var(--BackgroundColor);
+  opacity: 1;
 }
 
 img {

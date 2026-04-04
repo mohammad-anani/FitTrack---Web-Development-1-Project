@@ -111,3 +111,7 @@ function loginFailedAnimation() {
     passwordInput?.classList.remove("failed-animation");
   }, 300);
 }
+
+document.getElementById("register").addEventListener("click", () => {
+  window.location.replace("/register");
+});

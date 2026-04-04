@@ -81,7 +81,7 @@ async function fillUserGoals(goals) {
   tableBody.innerHTML =
     goals.length > 0
       ? (await Promise.all(goals.map((g) => displayGoal(g)))).join("")
-      : "<span class='empty'>No Goals</span>";
+      : "<span class='empty'>No Previous +Goals</span>";
 
   handleResponsiveTable();
 }

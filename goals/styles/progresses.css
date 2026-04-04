@@ -1,0 +1,38 @@
+.progresses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  font-size: 20px;
+}
+
+progress {
+  width: 100%;
+  height: 100%;
+}
+
+progress::-webkit-progress-bar {
+  border-radius: 50px;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--LightMainColor);
+  border-radius: 50px;
+}
+
+.progress-div {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  gap: 15px;
+  height: 30px;
+}
+
+.progresses-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+  margin-top: 10px;
+  justify-content: center;
+}

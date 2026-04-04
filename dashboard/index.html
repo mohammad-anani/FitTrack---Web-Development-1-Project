@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="/Global/global.css" />
     <link rel="stylesheet" href="/Global/loadingSpinner.css" />
     <link rel="stylesheet" href="/Global/navbar.css" />
+    <link rel="stylesheet" href="./cards.css" />
+    <link rel="stylesheet" href="../goals/styles/currentGoal.css" />
+    <link rel="stylesheet" href="../goals/styles/totalProgress.css" />
     <link rel="stylesheet" href="./style.css" />
 
-    <title>Log Workout</title>
+    <title>FitTrack Dashboard</title>
   </head>
   <body>
     <!--This aside is present in all pages(acts as a Layout) -->
@@ -25,7 +28,7 @@
       <nav>
         <div class="selection-div"></div>
         <a
-          class="nav-link dashboard"
+          class="nav-link dashboard hover-disabled"
           href="/Dashboard"
           data-index="0"
           title="Dashboard"
@@ -44,7 +47,7 @@
         <a
           href="/Workouts/add"
           title="Log Workout"
-          class="nav-link log-workout hover-disabled"
+          class="nav-link log-workout"
           data-index="2"
         >
           <i class="fa-solid fa-person-running"></i>
@@ -66,56 +69,33 @@
     </aside>
     <!--Main Content-->
     <main>
-      <h2>Log Workout</h2>
-      <form id="workoutForm">
-        <section class="inputs">
-          <label for="name">Workout Name:</label>
-          <div>
-            <input required name="name" type="text" id="name" />
-            <span id="nameValidation"></span>
-          </div>
-          <label for="type">Type:</label>
-          <div>
-            <select required name="type" id="type">
-              <option value="" disabled selected>Select a type</option>
-            </select>
-            <span id="typeValidation"></span>
-          </div>
-          <label for="date">Date:</label>
-          <div>
-            <input required name="date" type="date" id="date" />
-            <span id="dateValidation"></span>
-          </div>
-          <label for="duration">Duration (mins):</label>
-          <div>
-            <input
-              required
-              name="duration"
-              type="number"
-              id="duration"
-              min="1"
-            />
-            <span id="durationValidation"></span>
-          </div>
-          <label for="calories">Calories:</label>
-          <div>
-            <input
-              required
-              name="calories"
-              type="number"
-              id="calories"
-              min="1"
-            />
-            <span id="caloriesValidation"></span>
-          </div>
-        </section>
-        <div>
-          <button id="reset" type="reset">Clear</button>
-          <button id="submit" type="submit">Add Workout</button>
+      <div>
+        <h3 class="stats">Stats:</h3>
+        <div class="cards-div">
+          <a class="card one" id="1"
+            ><div>
+              <h3>Total Workouts:</h3>
+              <span id="workouts">1</span>
+            </div>
+          </a>
+          <a class="card two" id="2">
+            <div>
+              <h3>Total Calories:</h3>
+              <span id="calories">10000</span>
+            </div></a
+          >
+          <a class="card three" id="3">
+            <div>
+              <h3>Total Goals:</h3>
+              <span id="goals">1000</span>
+            </div></a
+          >
         </div>
-      </form>
-      <div class="loading-div"></div>
+      </div>
+
+      <div class="currentGoal"></div>
     </main>
   </body>
-  <script src="script.js" type="module"></script>
+  <script src="./scripts.js" type="module"></script>
+  <script src="../Global/navbar.js" type="module"></script>
 </html>

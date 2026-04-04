@@ -1,0 +1,97 @@
+main {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  padding: 15px;
+  background-color: white;
+  top: 150px;
+  height: 350px;
+  display: none;
+  flex-direction: column;
+  max-width: 600px;
+  z-index: 100;
+}
+
+.modal *:not(h2) {
+  font-size: 15px;
+}
+
+.blur {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  top: 0;
+  opacity: 0.6;
+  left: 0;
+}
+
+.modal input,
+.modal select {
+  border: 1px solid #ccc;
+  height: 30px;
+  padding: 0px 0px 0px 15px;
+}
+
+.filters-div {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 10px;
+  flex: 1;
+  align-items: stretch;
+}
+
+.labels-div,
+.inputs-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 15px;
+  width: 100%;
+}
+
+.labels-div label {
+  padding: 6px 0px;
+}
+
+.order-div {
+  display: grid;
+  grid-template-columns: 30px 100px 30px 1fr;
+  align-items: center;
+}
+
+.date-div {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 10px;
+}
+
+.buttons-div {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+#apply {
+  padding: 10px 25px;
+}
+
+.modal i {
+  position: absolute;
+  top: 15px;
+  font-size: 20px;
+  right: 15px;
+}
+
+.modal i:hover {
+  cursor: pointer;
+}
+
+.modal i:active {
+  opacity: 0.6;
+}

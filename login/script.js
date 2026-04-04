@@ -2,13 +2,16 @@ import { User } from "../Data/User.js";
 import { validateEmailWithMessage } from "../Data/util/emailManager.js";
 import { validatePasswordWithMessage } from "../Data/util/passwordManager.js";
 
-let emailInput = document.getElementById("email-input");
-let passwordInput = document.getElementById("password-input");
-let emailValidationSpan = document.getElementById("email-validation");
-let passwordValidationSpan = document.getElementById("password-validation");
-let form = document.getElementById("form");
-let loginValidationSpan = document.getElementById("login-validation");
-let rememberMeInput = document.getElementById("remember-me-input");
+const emailInput = document.getElementById("email-input");
+const passwordInput = document.getElementById("password-input");
+
+const emailValidationSpan = document.getElementById("email-validation");
+const passwordValidationSpan = document.getElementById("password-validation");
+
+const form = document.getElementsByTagName("form")?.[0];
+const loginValidationSpan = document.getElementById("login-validation");
+
+const rememberMeInput = document.getElementById("remember-me-input");
 
 autoLogin();
 addInputsListeners();
@@ -94,21 +97,9 @@ function addFormListener() {
   });
 }
 
-function resetFailedStyle(element) {
-  element?.classList.remove("failed");
-}
-
 function setFailedAnimation(element) {
   element?.classList.add("failed", "failed-animation");
   setTimeout(() => element?.classList.remove("failed-animation"), 300);
-}
-
-function passwordFailedAnimation() {
-  passwordInput?.classList.add("failed", "failed-animation");
-
-  setTimeout(() => {
-    passwordInput?.classList.remove("failed-animation");
-  }, 300);
 }
 
 function loginFailedAnimation() {

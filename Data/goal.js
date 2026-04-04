@@ -30,13 +30,26 @@ export class Goal {
     const d = new Date(date);
     const day = d.getDay();
 
+    // Calculate Monday of the week
     const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
-    const monday = new Date(new Date(d).setDate(diffToMonday));
-    const sunday = new Date(new Date(monday).setDate(monday.getDate() + 6));
+    const monday = new Date(d);
+    monday.setDate(diffToMonday);
+
+    // Sunday = Monday + 6
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    // Format YYYY-MM-DD
+    const formatDate = (dt) => {
+      const y = dt.getFullYear();
+      const m = String(dt.getMonth() + 1).padStart(2, "0");
+      const day = String(dt.getDate()).padStart(2, "0");
+      return `${y}-${m}-${day}`;
+    };
 
     return {
-      monday: monday.toISOString().split("T")[0],
-      sunday: sunday.toISOString().split("T")[0],
+      monday: formatDate(monday),
+      sunday: formatDate(sunday),
     };
   }
 
@@ -62,7 +75,8 @@ export class Goal {
 
   static getCurrentUserGoal(userId) {
     const { monday, sunday } = Goal.getWeekRange(new Date());
-    const data = getAll(tableName, [
+    console.log(monday);
+    const data = Goal.getAllGoals([
       ["userId", userId],
       ["weekStartDate", monday],
     ]);
@@ -71,6 +85,7 @@ export class Goal {
 
   addGoal() {
     const { monday, sunday } = Goal.getWeekRange(new Date());
+
     const dataToSave = {
       id: this.id,
       userId: this.userId,
@@ -86,9 +101,7 @@ export class Goal {
   }
 
   resetGoal() {
-    this.calorieTarget = 0;
-    this.workoutTarget = 0;
-    return this.updateGoal();
+    return Goal.deleteGoalByID(this.id);
   }
 
   static deleteGoalByID(id) {
@@ -160,9 +173,18 @@ export class Goal {
   static getMotivationalMessage(progress) {
     if (progress === 0) return "Let's get started on your goals this week!";
     if (progress < 25) return "Great start! Keep pushing!";
-    if (progress < 50) return "You're doing well! Halfway there!";
-    if (progress < 75) return "Almost there! Don't stop now!";
-    if (progress < 100) return "So close to your weekly goal! You got this!";
+    if (progress < 50)
+      return "You're doing well! Heading toward the halfway mark!";
+
+    if (progress < 62.5)
+      return "Over the hump! You're officially in the Orange zone!";
+    if (progress < 75)
+      return "Solid consistency! The Yellow zone looks good on you!";
+    if (progress < 87.5)
+      return "Incredible momentum! You're deep in the Green now!";
+    if (progress < 100)
+      return "Final stretch! Only a few more steps to the finish line!";
+
     return "Amazing job! You've crushed your goal for the week!";
   }
 

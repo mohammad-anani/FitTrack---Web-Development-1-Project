@@ -20,6 +20,12 @@ export class User {
     this.name = name;
   }
 
+  static getCurrentUser() {
+    return User.createInstance(
+      JSON.parse(sessionStorage.getItem("currentUser")),
+    );
+  }
+
   static createInstance(data) {
     if (!data) return null;
     console.log(data);

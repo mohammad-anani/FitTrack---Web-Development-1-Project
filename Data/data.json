@@ -118,13 +118,85 @@
       "calories": 20
     },
     {
-      "id": -1,
+      "id": "17",
       "userId": 2,
       "name": "Ali",
       "type": "Flexibility",
       "date": "2026-03-26",
       "duration": 120,
       "calories": 102
+    },
+    {
+      "id": "19",
+      "userId": 2,
+      "name": "Light Yoga",
+      "type": "flexibility",
+      "date": "2026-03-13",
+      "duration": 30,
+      "calories": 120
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "ssss",
+      "type": "Cardio",
+      "date": "2026-04-01",
+      "duration": 10,
+      "calories": 100
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "askdfopkr",
+      "type": "Strength",
+      "date": "2026-04-10",
+      "duration": 10,
+      "calories": 100
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "Mohammad Anani",
+      "type": "Strength",
+      "date": "2026-04-23",
+      "duration": 10,
+      "calories": 10
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "ddddd",
+      "type": "Cardio",
+      "date": "2026-04-16",
+      "duration": 10,
+      "calories": 10
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "Mohammad",
+      "type": "Cardio",
+      "date": "2026-04-15",
+      "duration": 10,
+      "calories": 29
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "Has Deposit",
+      "type": "Cardio",
+      "date": "2026-04-03",
+      "duration": 9,
+      "calories": 39
+    },
+    {
+      "id": -1,
+      "userId": 2,
+      "name": "Mohammad Anani",
+      "type": "Flexibility",
+      "date": "2026-04-02",
+      "duration": 22,
+      "calories": 22
     }
   ],
   "types": [

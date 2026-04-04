@@ -1,47 +1,71 @@
 import { User } from "../Data/User.js";
 
-let lastButton = document.querySelector(".home");
-let selectionDiv = document.querySelector(".selection-div");
-let nameSpan = document.querySelector(".profile-username-span");
+let lastSelectedButton;
+const selectionDiv = document.querySelector(".selection-div");
+let nameSpan = document.querySelector(".user-name-span");
+const navLinks = document.querySelectorAll(".nav-link");
+const logoutButton = document.querySelector(".logout");
+const loadingDiv = document.querySelector(".loading-div");
 
+setSelectedNavlink();
 fillInfo();
 addNavButtonsEventListener();
 addLogoutEventListener();
 
-function addNavButtonsEventListener() {
-  document.querySelectorAll(".nav-button.sup").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectButton(button);
-      lastButton?.classList.remove("hover-disabled");
+function setSelectedNavlink() {
+  const savedIndex = sessionStorage.getItem("selectedNavIndex");
+  if (savedIndex === null) return;
 
-      lastButton = button;
+  selectionDiv.style.transition = "none";
+  selectionDiv.style.top = 20 + 70 * Number(savedIndex) + "px";
+  selectionDiv.offsetHeight;
+  selectionDiv.style.transition = "top 0.15s";
+}
+
+function fillInfo() {
+  const user = User.getCurrentUser();
+  nameSpan.textContent = user.name;
+}
+
+function addNavButtonsEventListener() {
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      navigate(link);
     });
   });
 }
 
-function selectButton(button) {
-  if (button.dataset.index && selectionDiv) {
-    selectionDiv.style.top = 20 + 70 * Number(button.dataset.index) + "px";
+export function navigate(button) {
+  if (button.dataset.index)
+    sessionStorage.setItem("selectedNavIndex", button.dataset.index);
+
+  selectButton(button);
+
+  const destination = button.getAttribute("href");
+
+  if (destination) {
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 125);
   }
 }
 
+function selectButton(button) {
+  lastSelectedButton?.classList.remove("hover-disabled");
+  lastSelectedButton = button;
+
+  if (button.dataset.index && selectionDiv)
+    selectionDiv.style.top = 20 + 70 * Number(button.dataset.index) + "px";
+}
+
 function addLogoutEventListener() {
-  document.querySelector(".logout")?.addEventListener("click", () => {
+  logoutButton.addEventListener("click", () => {
     localStorage.removeItem("savedUserID");
-    sessionStorage.removeItem("savedUserID");
-
-    document
-      .querySelector(".loading-div")
-      ?.classList.add("loading-div-running");
-
+    sessionStorage.clear();
+    loadingDiv.classList.add("loading-div-running");
     setTimeout(() => {
       window.location.replace("/login");
     }, 1000);
   });
-}
-
-function fillInfo() {
-  const userSession = sessionStorage.getItem("currentUser");
-  const user = User.createInstance(JSON.parse(userSession));
-  nameSpan.textContent = user.name;
 }

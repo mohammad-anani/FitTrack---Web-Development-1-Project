@@ -1,6 +1,7 @@
 import { User } from "../../Data/User.js";
 import { Workout } from "../../Data/Workout.js";
 import { WorkoutType } from "../../Data/WorkoutType.js";
+import { navigate } from "../../Global/navbar.js";
 
 const nameInput = document.getElementById("name");
 const typeSelect = document.getElementById("type");
@@ -16,9 +17,7 @@ const caloriesValidation = document.getElementById("caloriesValidation");
 
 const form = document.getElementById("workoutForm");
 
-const user = User.createInstance(
-  JSON.parse(sessionStorage.getItem("currentUser")),
-);
+const user = User.getCurrentUser();
 
 const types = await WorkoutType.getAllTypes();
 types.forEach((type) => {
@@ -90,6 +89,9 @@ form.addEventListener("submit", async (e) => {
   const success = await workout.addWorkout();
 
   if (success) {
-    window.location.href = "/workouts"; // Or wherever you'd like to redirect
+    {
+      const workoutsNavLink = document.querySelector(".workouts.nav-link");
+      navigate(workoutsNavLink);
+    }
   }
 });

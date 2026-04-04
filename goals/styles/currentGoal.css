@@ -1,0 +1,29 @@
+h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.current-Goal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.reset-div {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+@media (min-width: 1180px) {
+  .progresses,
+  .total {
+    width: calc(50% - 15px);
+  }
+
+  .progresses {
+    height: 220px;
+  }
+}

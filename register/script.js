@@ -2,15 +2,19 @@ import { User } from "../Data/User.js";
 import { validateEmailWithMessage } from "../Data/util/emailManager.js";
 import { validatePasswordWithMessage } from "../Data/util/passwordManager.js";
 
+//Text Inputs
 let nameInput = document.getElementById("name-input");
 let emailInput = document.getElementById("email-input");
 let passwordInput = document.getElementById("password-input");
 
+//Validation spans below each input
 let nameValidationSpan = document.getElementById("name-validation");
 let emailValidationSpan = document.getElementById("email-validation");
 let passwordValidationSpan = document.getElementById("password-validation");
 
-let form = document.getElementById("form");
+let form = document.getElementsByTagName("form")?.[0];
+
+//Validation for the form
 let registerValidationSpan = document.getElementById("register-validation");
 
 addInputsListeners();
@@ -44,10 +48,6 @@ function validatePassword(password) {
   }
   passwordValidationSpan.textContent = "";
   return true;
-}
-
-function resetFailedStyle(element) {
-  element?.classList.remove("failed");
 }
 
 function setFailedAnimation(element) {

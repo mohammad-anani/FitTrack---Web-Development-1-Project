@@ -1,0 +1,137 @@
+.stats {
+  color: var(--MainColor);
+  font-size: 45px;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+.cards-div {
+  margin-top: 50px;
+  position: relative;
+  height: 250px;
+  box-sizing: border-box;
+}
+
+.card {
+  top: 0px;
+  left: calc(50% - 200px);
+  box-sizing: border-box;
+  position: absolute;
+  width: 400px;
+  height: 250px;
+  animation-name: cards;
+  animation-duration: 12.375s;
+  animation-iteration-count: infinite;
+}
+
+.card div:hover {
+  transform: scale(1.1);
+}
+
+.card div {
+  width: 360px;
+  height: 250px;
+  background-color: var(--VeryLightMainColor);
+  text-decoration: none;
+  transition: transform 0.125s ease;
+  height: 100%;
+  border-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border: 2px solid var(--SemiLightMainColor);
+  padding: 20px;
+  color: var(--BackgroundColor);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  text-decoration: underline;
+  font-size: 30px;
+  color: var(--BackgroundColor);
+}
+
+.card span {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.card.one {
+  z-index: 100;
+  animation-delay: 0s;
+}
+
+.card.two {
+  transform: translate(-10px, -10px);
+  z-index: 99;
+  animation-delay: -4125ms;
+}
+
+.card.three {
+  transform: translate(-20px, -20px);
+  z-index: 98;
+  animation-delay: -8250ms;
+}
+
+@keyframes cards {
+  0% {
+    z-index: 100;
+    transform: none;
+  }
+  23.33% {
+    z-index: 100;
+    transform: none;
+  }
+  28.33% {
+    z-index: 100;
+    transform: translate(110%, -50%) rotate(0.125turn);
+  }
+  28.34% {
+    z-index: -1;
+    transform: translate(110%, -50%) rotate(0.125turn);
+  }
+  33.33% {
+    transform: translate(-20px, -20px);
+    z-index: 98;
+  }
+  56.65% {
+    transform: translate(-20px, -20px);
+    z-index: 98;
+  }
+  66.66% {
+    transform: translate(-10px, -10px);
+    z-index: 98;
+  }
+  66.67% {
+    transform: translate(-10px, -10px);
+    z-index: 99;
+  }
+  89.99% {
+    transform: translate(-10px, -10px);
+    z-index: 99;
+  }
+  99.99% {
+    z-index: 99;
+    transform: none;
+  }
+  100% {
+    z-index: 100;
+    transform: none;
+  }
+}
+
+@media (min-width: 1410px) {
+  .cards-div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card {
+    transform: none !important;
+    animation: none;
+    position: static;
+  }
+}

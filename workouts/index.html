@@ -10,54 +10,47 @@
       href="../fontawesome-free-6.7.2-web/css/all.min.css"
     />
 
+    <!--CSS files-->
     <link rel="stylesheet" href="/Global/global.css" />
     <link rel="stylesheet" href="/Global/loadingSpinner.css" />
     <link rel="stylesheet" href="/Global/navbar.css" />
-
-    <link rel="stylesheet" href="style.css" />
-
-    <!--lato font link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="./styles/workouts.css" />
+    <link rel="stylesheet" href="./styles/pagination.css" />
+    <link rel="stylesheet" href="./styles/action-bar.css" />
+    <link rel="stylesheet" href="./styles/filter-modal.css" />
 
     <title>Workouts</title>
   </head>
   <body>
-    <aside class="menu-aside">
-      <section class="upper-section">
+    <!--This aside is present in all pages(acts as a Layout) -->
+    <aside>
+      <div class="profile-div">
         <img src="../Pictures/AU LOGO.jpg" alt="Logo" class="logo-img" />
-        <span class="profile-username-span"></span>
-      </section>
-      <nav class="menu-nav">
+        <span class="user-name-span"></span>
+      </div>
+      <nav>
         <div class="selection-div"></div>
         <a
-          class="nav-button home sup hover-disabled"
-          href="../SubPages/Home/index.html"
+          class="nav-link dashboard"
+          href="/Dashboard"
           data-index="0"
           title="Dashboard"
         >
-          <i
-            class="fa-solid fa-chart-line"
-            title="
-          Dashboard"
-          ></i
-          ><span>Dashboard</span></a
+          <i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a
         >
         <a
+          href="/Workouts"
           title="Workouts"
-          class="sup nav-button dropdown workouts"
+          class="nav-link workouts hover-disabled"
           data-index="1"
         >
           <i class="fa-solid fa-dumbbell"></i>
           <span>Workouts</span>
         </a>
         <a
+          href="/Workouts/add"
           title="Log Workout"
-          class="sup nav-button dropdown workouts"
+          class="nav-link log-workout"
           data-index="2"
         >
           <i class="fa-solid fa-person-running"></i>
@@ -66,96 +59,116 @@
         <a
           target="page"
           title="Goals"
-          class="sup sup nav-button sessions"
+          href="/Goals"
+          class="nav-link goals"
           data-index="3"
         >
           <i class="fa-solid fa-bullseye"></i><span>Goals</span></a
         >
-        <button title="Logout" class="sup nav-button logout" data-index="4">
+        <button title="Logout" class="nav-link logout" data-index="4">
           <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
         </button>
       </nav>
     </aside>
+    <!--Main Content-->
     <main>
       <h2>Workouts</h2>
-      <!-- <div class="action-bar">
-        <button
-          class="btn btn-primary"
-          onclick="window.location.href += '/add'"
-        >
-          <i class="fa-solid fa-plus"></i> Add
-        </button>
-        <button class="btn btn-primary">
-          <i class="fa-solid fa-filter"></i> Filter
-        </button>
-
-        <div class="search-container">
+      <div class="workouts-table">
+        <!--Bar containing filter, add, search-->
+        <div class="action-bar">
+          <button id="filter">
+            <i class="fa-solid fa-filter"></i> <span> Filter </span>
+          </button>
           <input
             type="text"
             id="name"
             placeholder="Search by name..."
             class="search-input"
           />
+          <button id="add">
+            <i class="fa-solid fa-plus"></i>
+            <span> Add </span>
+          </button>
         </div>
-      </div> -->
-
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2">Name</th>
-              <th></th>
-              <th>Type</th>
-              <th>Calories</th>
-              <th>Duration</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="workout-list">
-            <tr>
-              <td colspan="2">Evening Yoga</td>
-              <td></td>
-              <td>Yoga</td>
-              <td>120 kcal</td>
-              <td>45 min</td>
-              <td>
-                <button><i class="fa-solid fa-trash"></i> Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">Evening Yoga</td>
-              <td></td>
-              <td>Yoga</td>
-              <td>120 kcal</td>
-              <td>45 min</td>
-              <td>
-                <button><i class="fa-solid fa-trash"></i> Delete</button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="7" class="text-right">
-                <span id="record-count">1</span> records
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+        <!--Table of data-->
+        <div class="table-div">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Calories</th>
+                <th>Duration</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="workouts-tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6"><span id="record-count"></span> records</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!--Pagination for splitting many rows into pages-->
+        <div class="pagination">
+          <button class="page-link back disabled">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="page-link number active">1</button>
+          <button class="page-link number">2</button>
+          <button class="page-link next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
+      <!--blur used for modal-->
+      <div class="blur"></div>
+      <!--Modal that displays more filters -->
+      <div class="modal">
+        <i id="x-button" class="fa-solid fa-x"></i>
+        <h2>Filters</h2>
+        <div class="filters-div">
+          <div class="labels-div">
+            <label for="sort">Sort By</label>
+            <label>Order</label>
+            <label for="type">Type</label>
+            <label>Date</label>
+          </div>
+          <div class="inputs-div">
+            <select id="sort" name="sort">
+              <option value="calories">Calories</option>
+              <option value="duration">Duration</option>
+            </select>
+            <div class="order-div">
+              <input type="radio" value="asc" name="order" id="asc" checked />
+              <label for="asc"> Ascending </label>
+              <input type="radio" value="desc" name="order" id="desc" />
+              <label for="desc"> Descending </label>
+            </div>
 
-      <nav class="pagination">
-        <button class="page-link disabled">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="page-link active">1</button>
-        <button class="page-link">2</button>
-        <button class="page-link">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </nav>
+            <select id="type" name="type">
+              <option value="" disabled selected>Select a type</option>
+            </select>
+            <div class="date-div">
+              <label for="from">From:</label>
+              <input type="date" id="from" name="from" />
+              <label for="to">To:</label>
+              <input type="date" id="to" name="to" />
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons-div">
+          <button id="reset">Reset</button>
+          <button id="apply">Apply</button>
+        </div>
+      </div>
     </main>
+    <div class="loading-div"></div>
   </body>
-  <script src="./script.js" defer type="module"></script>
-  <script src="uiscript.js"></script>
-  <script src="/Global/navbar.js"></script>
+  <!--Scripts-->
+
+  <script src="./scripts/table.js" type="module" defer></script>
 </html>

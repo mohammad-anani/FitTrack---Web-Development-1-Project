@@ -4,64 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--css links-->
+    <!--CSS links-->
     <link rel="stylesheet" href="/Global/global.css" />
-
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/Global/form.css" />
 
-    <!--lato font link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
     <title>FitTrack Register</title>
   </head>
   <body>
-    <form class="register-form" id="form">
+    <!--Form containing name, username and password-->
+    <form>
       <div class="logo-div">
         <img class="logo-img" src="../Pictures/AU LOGO.jpg" alt="Logo" />
       </div>
-      <div class="register-inputs-div">
-        <div class="input-container">
-          <span class="label">Name:</span>
-          <input
-            type="text"
-            id="name-input"
-            class="name-input"
-            placeholder="John Doe..."
-          />
+      <div class="inputs-div">
+        <div class="input-div">
+          <span class="input-label">Name:</span>
+          <input type="text" id="name-input" placeholder="John Doe..." />
           <span id="name-validation" class="validation"></span>
         </div>
-        <div class="input-container">
-          <span class="label">Email:</span>
-          <input
-            type="text"
-            id="email-input"
-            class="email-input"
-            placeholder="me@gmail.com"
-          />
+        <div class="input-div">
+          <span class="input-label">Email:</span>
+          <input type="text" id="email-input" placeholder="me@gmail.com" />
           <span id="email-validation" class="validation"></span>
         </div>
-        <div class="input-container">
-          <span class="label">Password:</span>
-
-          <input
-            type="password"
-            id="password-input"
-            class="password-input"
-            placeholder="Password"
-          />
+        <div class="input-div">
+          <span class="input-label">Password:</span>
+          <input type="password" id="password-input" placeholder="Password" />
           <span id="password-validation" class="validation"></span>
         </div>
       </div>
-      <span
-        id="register-validation"
-        class="validation register-validation"
-      ></span>
-      <div class="submit-button-div">
-        <button type="submit" class="submit-button">Submit</button>
+      <span id="register-validation" class="validation register"></span>
+      <div class="submit-div">
+        <button type="reset" class="primary">Reset</button>
+        <button type="submit" class="secondary">Submit</button>
       </div>
       <small class="copyright-small"
         >&copy;All rights reserved to FitTrack 2026</small

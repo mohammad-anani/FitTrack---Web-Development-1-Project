@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  gap: 3px;
+}
+
+.pagination > * {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+  padding: 0px;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: darkgray;
+}
+
+.active {
+  pointer-events: none;
+  background-color: rgb(255, 255, 255);
+}

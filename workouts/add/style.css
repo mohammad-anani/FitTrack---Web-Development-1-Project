@@ -1,0 +1,47 @@
+.inputs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 12px;
+  font-size: 20px;
+}
+
+.inputs > label {
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.inputs div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs div span {
+  color: var(--DestructiveColor);
+  font-size: 15px;
+}
+
+.inputs input,
+.inputs select {
+  border: 1px solid #ccc;
+  height: 40px;
+  padding: 0px 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form > div {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+form > div button:first-child {
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid black;
+}

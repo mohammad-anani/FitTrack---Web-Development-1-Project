@@ -1,7 +1,10 @@
 export function filterRowCallback(kvp_filter) {
   return (row) => {
     for (const [key, value] of kvp_filter) {
-      if (typeof value === "string" && row[key]?.includes(value)) {
+      if (
+        typeof value === "string" &&
+        row[key]?.toLowerCase().includes(value.toLowerCase())
+      ) {
         return true;
       }
       if (row[key] !== value) {

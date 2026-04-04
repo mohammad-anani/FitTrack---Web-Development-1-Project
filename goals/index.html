@@ -3,13 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./script.js" type="module"></script>
+
+    <!--font awesome link-->
+    <link rel="stylesheet" href="/fontawesome-free-6.7.2-web/css/all.min.css" />
+
+    <!--CSS files-->
+    <link rel="stylesheet" href="/Global/global.css" />
+    <link rel="stylesheet" href="/Global/loadingSpinner.css" />
+    <link rel="stylesheet" href="/Global/navbar.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../workouts/add/style.css" />
+    <link rel="stylesheet" href="./styles/totalProgress.css" />
+    <link rel="stylesheet" href="./styles/pagination.css" />
+    <link rel="stylesheet" href="./styles/progresses.css" />
+    <link rel="stylesheet" href="./styles/currentGoal.css" />
+    <link rel="stylesheet" href="./styles/prevGoals.css" />
+
     <title>Goals</title>
   </head>
   <body>
-    <h1>Goals</h1>
-    <div id="currentGoal"></div>
-    <h2>Previous Goals</h2>
-    <div id="goals-list"></div>
+    <!--This aside is present in all pages(acts as a Layout) -->
+    <aside>
+      <div class="profile-div">
+        <img src="../Pictures/AU LOGO.jpg" alt="Logo" class="logo-img" />
+        <span class="user-name-span"></span>
+      </div>
+      <nav>
+        <div class="selection-div"></div>
+        <a
+          class="nav-link dashboard"
+          href="/Dashboard"
+          data-index="0"
+          title="Dashboard"
+        >
+          <i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a
+        >
+        <a
+          href="/Workouts"
+          title="Workouts"
+          class="nav-link workouts"
+          data-index="1"
+        >
+          <i class="fa-solid fa-dumbbell"></i>
+          <span>Workouts</span>
+        </a>
+        <a
+          href="/Workouts/add"
+          title="Log Workout"
+          class="nav-link log-workout"
+          data-index="2"
+        >
+          <i class="fa-solid fa-person-running"></i>
+          <span>Log Workout</span>
+        </a>
+        <a
+          target="page"
+          title="Goals"
+          href="/Goals"
+          class="nav-link goals"
+          data-index="3"
+        >
+          <i class="fa-solid fa-bullseye hover-disabled"></i
+          ><span>Goals</span></a
+        >
+        <button title="Logout" class="nav-link logout" data-index="4">
+          <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+        </button>
+      </nav>
+    </aside>
+    <!--Main Content-->
+    <main>
+      <!--This div is empty here because it will be rendered by javascript-->
+      <div id="currentGoal"></div>
+      <h2>Previous Goals</h2>
+      <div class="goals-table">
+        <div class="table-div">
+          <table>
+            <thead>
+              <tr>
+                <th>Week Start</th>
+                <th>Calories Progress</th>
+                <th>Workouts Progress</th>
+                <th>Total Progress</th>
+                <th>Completed</th>
+              </tr>
+            </thead>
+            <tbody id="goals-tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6"><span id="record-count"></span> records</td>
+              </tr>
+            </tfoot>
+          </table>
+          <!--Pagination for splitting many rows into pages-->
+        </div>
+        <div class="pagination">
+          <button class="page-link back disabled">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="page-link number active">1</button>
+          <button class="page-link number">2</button>
+          <button class="page-link next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="loading-div"></div>
+    </main>
   </body>
+  <script src="./scripts/script.js" type="module"></script>
+  <script src="/Global/navbar.js" type="module"></script>
 </html>

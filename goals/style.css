@@ -1,0 +1,46 @@
+main input,
+main select {
+  border: 1px solid #ccc;
+  height: 40px;
+}
+
+.inputs-div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 12px;
+  font-size: 20px;
+}
+
+.inputs-div > label {
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.validation {
+  color: var(--DestructiveColor);
+  font-size: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form button {
+  width: 100px;
+  align-self: flex-end;
+}
+
+.no-goal {
+  display: block;
+  margin: 10px 0px;
+  font-size: 18px;
+}

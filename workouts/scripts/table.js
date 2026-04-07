@@ -11,7 +11,7 @@ addAddListener();
 
 const tableBody = document.getElementById("workouts-tbody");
 const rowCountSpan = document.getElementById("record-count");
-const rowsPerPage = 2;
+const rowsPerPage = 5;
 let currentPage = 1;
 let totalPages = 0;
 let filteredWorkouts = [];

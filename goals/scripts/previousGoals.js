@@ -7,7 +7,7 @@ import { handleResponsiveTable } from "./responsiveTable.js";
 
 let tableBody = document.getElementById("goals-tbody");
 const rowCountSpan = document.getElementById("record-count");
-const rowsPerPage = 2;
+const rowsPerPage = 5;
 
 let currentPage = 1;
 let totalPages = 0;

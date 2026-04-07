@@ -28,8 +28,8 @@ goalsStat.textContent = totalGoals;
 const currentGoal = Goal.getCurrentUserGoal(user.id);
 const currentGoalDiv = document.querySelector(".currentGoal");
 
+await renderGoalsCanvasChart(user.id);
 if (currentGoal) {
-  await renderGoalsCanvasChart(user.id);
   await renderCurrentGoal(currentGoal, currentGoalDiv);
 } else {
   currentGoalDiv.innerHTML =

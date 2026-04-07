@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/cards.css" />
     <link rel="stylesheet" href="../goals/styles/currentGoal.css" />
     <link rel="stylesheet" href="../goals/styles/totalProgress.css" />
+    <link rel="stylesheet" href="./styles/chart.css" />
     <link rel="stylesheet" href="./styles/style.css" />
 
     <title>FitTrack Dashboard</title>
@@ -69,7 +70,7 @@
     </aside>
     <!--Main Content-->
     <main>
-      <div>
+      <section>
         <h3 class="stats">Stats:</h3>
         <div class="cards-div">
           <a class="card one" id="1"
@@ -91,9 +92,19 @@
             </div></a
           >
         </div>
+      </section>
+      <div class="container">
+        <section class="currentGoal"></section>
+        <section class="chart-section">
+          <h3 class="chart-title">Last 4 Goals Progress</h3>
+          <canvas
+            id="goalsChart"
+            width="500"
+            height="310"
+            aria-label="Last 4 goals progress chart"
+          ></canvas>
+        </section>
       </div>
-
-      <div class="currentGoal"></div>
     </main>
   </body>
   <script src="./scripts/scripts.js" type="module"></script>

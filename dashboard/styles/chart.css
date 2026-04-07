@@ -1,0 +1,20 @@
+.chart-section {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.chart-title {
+  margin-bottom: 12px;
+  color: var(--MainColor);
+  text-decoration: underline;
+}
+
+#goalsChart {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #f9fafb;
+}

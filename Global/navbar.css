@@ -2,14 +2,14 @@ aside {
   width: 250px;
   display: flex;
   flex-direction: column;
-  background-color: var(--LightMainColor);
+  background-color: var(--MainColor-2);
   position: fixed;
   left: 0px;
   bottom: 0px;
   top: 0px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 body {
@@ -84,7 +84,7 @@ button.nav-link {
 }
 
 .nav-link:hover {
-  background-color: var(--SemiLightMainColor);
+  background-color: var(--MainColor-3);
 }
 
 .hover-disabled {

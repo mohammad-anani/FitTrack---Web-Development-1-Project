@@ -65,7 +65,7 @@ export class Goal {
   }
 
   static getAllGoals(filter = null) {
-    const data = getAll(tableName, filter);
+    const data = getAll(tableName, filter, "weekStartDate", false);
     return data.map((obj) => Goal.createInstance(obj));
   }
 
@@ -193,5 +193,22 @@ export class Goal {
     if (!stats) return false;
 
     return stats.calorieProgress >= 100 && stats.workoutProgress >= 100;
+  }
+
+  // Returns color based on progress
+  static getProgressColor(progress) {
+    if (progress < 50) return "red";
+    if (progress < 62.5) return "orange";
+    if (progress < 75) return "yellow";
+    if (progress < 87.5) return "green";
+    return "blue";
+  }
+
+  static getProgressSoftColor(progress) {
+    if (progress < 50) return "#ef4444";
+    if (progress < 62.5) return "#f59e0b";
+    if (progress < 75) return "#facc15";
+    if (progress < 87.5) return "#22c55e";
+    return "#3b82f6";
   }
 }

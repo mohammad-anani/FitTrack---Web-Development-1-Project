@@ -156,7 +156,7 @@ function animateCaret(progress) {
 }
 // Colors the percentage span
 function colorPercentage(progress) {
-  const color = getProgressColor(progress);
+  const color = Goal.getProgressColor(progress);
   const percentageOuterSpan = document.querySelector(".total-ui-span");
   document.documentElement.style.setProperty("--color", color);
   percentageOuterSpan?.classList.add("total-ui-span-color");
@@ -176,12 +176,4 @@ function typeMessage(message, container, speed = 50) {
 
   // small delay before typing starts
   setTimeout(typeChar, 1000);
-}
-// Returns color based on progress
-function getProgressColor(progress) {
-  if (progress < 50) return "red";
-  if (progress < 62.5) return "orange";
-  if (progress < 75) return "yellow";
-  if (progress < 87.5) return "green";
-  return "blue";
 }

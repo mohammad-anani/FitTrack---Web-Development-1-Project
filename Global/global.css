@@ -1,11 +1,11 @@
 /*recheck colors*/
 :root {
   --MainColor: rgb(8, 8, 36);
-  --LightMainColor: rgb(43, 43, 84);
+  --MainColor-2: rgb(43, 43, 84);
+  --MainColor-3: rgb(47, 47, 105);
+  --MainColor-4: rgb(80, 80, 212);
   --BackgroundColor: rgb(210, 210, 210);
-  --SemiLightMainColor: rgb(47, 47, 105);
   --DestructiveColor: rgb(255, 0, 0);
-  --VeryLightMainColor: rgb(80, 80, 212);
 }
 
 html {
@@ -76,7 +76,7 @@ select {
 }
 
 input:focus {
-  outline: 2px solid var(--LightMainColor);
+  outline: 2px solid var(--MainColor-2);
 }
 
 main {

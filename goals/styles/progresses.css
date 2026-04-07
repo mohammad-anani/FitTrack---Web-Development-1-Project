@@ -16,7 +16,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: var(--LightMainColor);
+  background-color: var(--MainColor-2);
   border-radius: 50px;
 }
 

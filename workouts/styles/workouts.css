@@ -25,7 +25,7 @@ tr {
 }
 
 thead tr {
-  background-color: var(--LightMainColor);
+  background-color: var(--MainColor-2);
   color: white;
   text-align: left;
 }
@@ -49,12 +49,12 @@ td {
 }
 
 tbody tr:nth-of-type(even) {
-  background-color: var(--VeryLightMainColor);
+  background-color: var(--MainColor-4);
   color: white;
 }
 
 tfoot tr {
-  background-color: var(--LightMainColor);
+  background-color: var(--MainColor-2);
   color: white;
   font-weight: bold;
   grid-template-columns: 1fr;

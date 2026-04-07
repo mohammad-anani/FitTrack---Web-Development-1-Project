@@ -7,3 +7,16 @@ main {
   height: 70px;
   font-size: 40px;
 }
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 880px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+}

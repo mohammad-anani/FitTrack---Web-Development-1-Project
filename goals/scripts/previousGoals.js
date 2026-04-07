@@ -62,19 +62,11 @@ async function displayGoal(goal) {
     <td>${goal.weekStartDate}</td>
     <td>${stats.weeklyCalories}/${goal.calorieTarget}</td>
     <td>${stats.weeklyCount}/${goal.workoutTarget}</td>
-   <td style="color:${getProgressColor(stats.totalProgress)}">${stats.totalProgress}</td>
+   <td style="color:${Goal.getProgressSoftColor(stats.totalProgress)}">${stats.totalProgress}</td>
     <td>
 ${stats.totalProgress >= 100 ? "Yes" : "No"}
     </td>
   </tr>`;
-}
-
-function getProgressColor(progress) {
-  if (progress < 40) return "red";
-  if (progress < 60) return "orange";
-  if (progress < 80) return "yellow";
-  if (progress < 90) return "green";
-  return "blue";
 }
 
 async function fillUserGoals(goals) {

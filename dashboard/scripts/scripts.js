@@ -3,6 +3,7 @@ import { User } from "../../Data/User.js";
 import { Workout } from "../../Data/Workout.js";
 import { navigate } from "../../Global/navbar.js";
 import { renderCurrentGoal } from "./goalProgress.js";
+import { renderGoalsCanvasChart } from "./goalsChart.js";
 
 const user = User.getCurrentUser();
 
@@ -27,8 +28,10 @@ goalsStat.textContent = totalGoals;
 const currentGoal = Goal.getCurrentUserGoal(user.id);
 const currentGoalDiv = document.querySelector(".currentGoal");
 
-if (currentGoal) await renderCurrentGoal(currentGoal, currentGoalDiv);
-else {
+if (currentGoal) {
+  await renderGoalsCanvasChart(user.id);
+  await renderCurrentGoal(currentGoal, currentGoalDiv);
+} else {
   currentGoalDiv.innerHTML =
     "<h2>You don't have a goal for this week</h2><button class='primary' id='set'>Set Goal</button>";
 

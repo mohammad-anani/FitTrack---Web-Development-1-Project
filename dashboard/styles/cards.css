@@ -31,13 +31,13 @@
 .card div {
   width: 360px;
   height: 250px;
-  background-color: var(--VeryLightMainColor);
+  background-color: var(--MainColor-4);
   text-decoration: none;
   transition: transform 0.125s ease;
   height: 100%;
   border-radius: 50px;
   border-bottom-left-radius: 0px;
-  border: 2px solid var(--SemiLightMainColor);
+  border: 2px solid var(--MainColor-3);
   padding: 20px;
   color: var(--BackgroundColor);
   display: flex;
